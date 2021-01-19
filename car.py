@@ -29,7 +29,7 @@ class ElectricCar(Car):
 		super().__init__(make, model, year)
 	
 	def fill_gas_tank(self):
-		print("This car doesn't need a gas tank!")
+		print("This car does not need a gas tank!")
 
 my_bmw = ElectricCar('tesla', 'model s', 2016)
 my_bmw.fill_gas_tank()
