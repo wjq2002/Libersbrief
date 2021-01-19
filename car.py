@@ -31,5 +31,5 @@ class ElectricCar(Car):
 	def fill_gas_tank(self):
 		print("This car doesn't need a gas tank!")
 
-my_benz = ElectricCar('tesla', 'model s', 2016)
-my_benz.fill_gas_tank()
+my_bmw = ElectricCar('tesla', 'model s', 2016)
+my_bmw.fill_gas_tank()
