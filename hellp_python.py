@@ -533,3 +533,4 @@ else:
 words = contents.split()
 num_words = len(words)
 print(num_words)			#计算文件大致包含几个单词
+ctrl + /                    #集体注释
