@@ -1,7 +1,7 @@
 l = range (8)
 print(l)
 print(list(l))
-print('Hello World1')
+print('Hello World')
 print('Hello world2')
 print('Hello World3')
 print('Hello World4')

@@ -1,2 +1,0 @@
-csg = 'sb'
-print(csg) 
