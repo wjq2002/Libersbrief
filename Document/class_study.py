@@ -272,3 +272,45 @@ for i in s1:
         s3.append(i)
 print (s3)
 #输出 s1-s2 的结果
+
+str = '12312414'
+str.find('12', 0, 5)
+#find函数用于寻找字符串中的元素
+#第一个参数表示检索的字符串，第二个参数表示从第几位开始检索，第三个参数表示到第几位停止检索(对应下标，从0开始)
+S = 'abc123abc'
+S.find('ab')        #输出0
+S.find('ad')        #输出-1（不存在）
+S.rfind('ab')       #从右向左寻找元素，输出6
+S[S.rfind('a')]     #套娃，输出a
+
+a = '12312314 12313'
+a.split()           #将字符串隔开，形成列表
+list(a)             #将字符串的每一位都加入列表元素
+
+''.join(S)          #将S的每个元素组合形成字符串
+'-'.join(S)         #将S的每个元素组合形成字符串，并用'-'隔开
+
+S = 'I aM herE'
+S.upper()           #将字符串的每个字母都变成大写字母
+S.lower()           #将字符串的每个字母都变成小写字母
+S.capitalize()      #将字符串的首字母大写，其余权威全为小写
+S.title()           #将字符串的每个单词首字母大写，其余小写
+
+S='''
+fuck       
+'''
+print(S)            #输出三行内容
+
+name = 'Xiaoming'
+institute = 'CUHK(SZ)'
+example = f'{name} is a from {institute}'
+print(example)
+#使用f''+{}将字符串中的内容替换为别的字符串
+
+for i in range(5):
+    if i == 3:
+        pass            #占位符，什么都不做
+    print(i)
+
+print('tab')            #输出制表符
+print('spaces')         #输出4个空格
