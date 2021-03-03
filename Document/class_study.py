@@ -314,3 +314,31 @@ for i in range(5):
 
 print('tab')            #输出制表符
 print('spaces')         #输出4个空格
+
+
+def fun():
+    print('hello')
+    return
+def fun_():
+    print('hello')
+def fun__():
+    print('hello')
+    return 3
+print(fun())
+print(fun_())
+print(fun__())
+#只有指定return非0数时，才会得到非none的值
+
+
+from math import sin
+
+fun = input()
+x = int(input())
+exec(f'y = {fun}(x)')
+print(y)
+#使用exec函数和f'{}'技巧，使得不需要if，就能直接将函数名用于语句中
+
+ord('S')
+chr(65)
+#ASCII 码与字符转换
+
