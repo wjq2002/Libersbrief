@@ -16,22 +16,17 @@ def shift(letter, value):
     return letter
     
 def shift2(letter,value):
-    if letter.isupper():
-        ch = chr(ord(letter)+value)
+    if letter.isalpha():
+        ch = chr(ord(letter.upper())+value)
         if(ch>'Z'):
             ch = chr(ord(letter)+value-26)
-        if(ch<'A'):
+        elif(ch<'A'):
             ch = chr(ord(letter)+value+26)
-        return ch
-    elif letter.islower():
-        ch = chr(ord(letter)+value)
-        if(ch>'z'):
-            ch = chr(ord(letter)+value-26)
-        if(ch<'a'):
-            ch = chr(ord(letter)+value+26)
-        return ch
+        
+        return ch if letter.isupper() else ch.lower()
     
     return letter
+    
 #Encode the message(m) using caesars cipher
 def shift_cipher(m, value):
     secret = ''
