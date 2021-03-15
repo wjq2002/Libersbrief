@@ -467,7 +467,67 @@ l1 = [1,2,3,4]
 
 add(l1,[2])
 print(l1)
-#当涉及列表整体运算或赋值时，函数会申明局部变量（发现l1的id发生变化）
+# 当涉及列表整体运算或赋值时，函数会申明局部变量（发现l1的id发生变化）
 add_(l1,2)
 print(l1)
-#当仅仅对列表进行单项赋值或添加元素时，不会申明局部变量，而是共用同一个id
+# 当仅仅对列表进行单项赋值或添加元素时，不会申明局部变量，而是共用同一个id
+
+a = {'a':1, 'b':2, 'c':3}
+# 通过keys，values，items函数返回字典的键，值，键值对，其中键值对是以元组的形式返回
+print(a.keys())
+print(list(a.keys()))
+print(a.values())
+print(list(a.values()))
+print(a.items())
+print(list(a.items()))
+
+# 使用双变量输出键，值
+for x,y in a.items():
+    print(x,y)
+    
+# reverse函数将列表反序
+a = [1,2,3,4,5]
+print(a[::-1])
+a.reverse()
+print(a)
+
+# 比较元组的大小，按位比较
+print((0,1,2)<(0,1,100))
+print(('a','b')<('b','a'))
+
+# sorted 和 sort函数
+a = [2,4,1,1,2,3]
+b = sorted(a)
+print(a, b, sep = '\n')
+a.sort()
+print(a)
+
+# 将字典排序
+a = {'b':1, 'a':2, 'c':3}
+b = sorted(list(a.items()))
+print(a, b, sep = '\n')
+
+# 将字典备份同时排序
+d = {'a':10, 'b':1, 'c':'22'}
+tmp = []
+for x,y in d.items():
+    e = (x,y)
+    tmp.append(e)
+print(tmp)
+tmp.sort()
+print(tmp)
+
+# 统计一个文件中出现次数前十的字符
+a = open('D:\python_work/CSC1001_study/2021_3_15/test.txt')
+b = {}
+for line in a:
+    words = line.split()
+    for word in words:
+        b[word] = b.get(word, 0) + 1
+lst = []
+for x,y in b.items():
+    lst.append((y,x))
+lst.sort(reverse=True)
+for x,y in lst[:10]:
+    print(x,y)
+
