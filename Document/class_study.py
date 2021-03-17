@@ -531,3 +531,159 @@ lst.sort(reverse=True)
 for x,y in lst[:10]:
     print(x,y)
 
+#编写类进行迭代
+class Sequence:
+    def __init__(self): 
+        self.x = 0
+      
+    def __next__(self): 
+        self.x += 1
+        #if self.x > 14:
+        #raise StopIteration
+        return self.x**self.x
+    def __iter__(self):
+        return self
+
+s = Sequence()
+n = 0
+for e in s:
+    print(e)
+    n += 1 
+    if n > 10:
+        break
+
+
+# r表示只读    
+f = open('D:\python_work/CSC1001_study/2021_3_15/test.txt','r')
+#read函数默认从最开始读取全部
+f.read()
+print(f.read(3))        #read(3)代表从光标位置往后读取3位
+f.seek(0)               #seek(n)代表把光标移动到n的位置
+print(f.readline())     #代表读取一行的内容
+print(f.readlines())    #代表读取全部内容，并将每一行的内容存在列表中
+f.close()
+
+# w代表写入
+f = open('D:\python_work/CSC1001_study/2021_3_15/test.txt','w')
+f.write('one\n')
+f.writelines(['two\n', 'three'])# writelines 可以将列表写入文件
+f.close()
+# 使用with函数进行调用open
+with open('D:\python_work/CSC1001_study/2021_3_15/test.txt','r') as f:
+    while True:
+        line = f.readline()
+        if not line:    #判断是否为空
+            break
+        else :
+            print(line)
+            
+# 使用StopIteration输出3的倍数
+n = (e for e in range(50000000) if not e % 3)
+i = 0
+for e in n:
+    print(e)
+    i += 1
+    if i > 100:
+        #raise StopIteration
+        break
+
+# 生成器
+def fib(max):
+    n, a, b = 0, 0, 1
+    while n < max:
+        print(b)
+        a, b = b, a + b
+        n = n + 1
+    return 'done'
+fib(10)
+def fib_g(max):
+    n, a, b = 0, 0, 1
+    while n < max:
+        yield b             #! 使用yield函数能够减少内存使用，同时提高函数简洁度
+        a, b = b, a + b
+        n = n + 1
+    return 'done'
+for n in fib_g(6):
+    print(n)
+
+# 简单地讲，yield 的作用就是把一个函数变成一个 generator，
+# 带有 yield 的函数不再是一个普通函数，Python 解释器会将其视为一个 generator，
+# 调用 fib_g(5) 不会执行 fib_g 函数，而是返回一个 iterable 对象！
+# 在 for 循环执行时，每次循环都会执行 fab 函数内部的代码，
+# 执行到 yield b 时，fab 函数就返回一个迭代值，
+# 下次迭代时，代码从 yield b 的下一条语句继续执行，
+# 而函数的本地变量看起来和上次中断执行前是完全一样的，
+# 于是函数继续执行，直到再次遇到 yield。
+
+#! 使用lambda 模块编写简易函数
+# 变量名 = lambda   ：   冒号左侧申明变量，右侧申明表达式
+add = lambda a, b : a + b
+print(add(1,2))
+fn = lambda x : x**2
+print(fn(3))
+print((lambda x : x**2)(3))
+print((lambda x : [x*_ for _ in range(5)])(3))
+
+#使用lambda模块对多元素列表的不同位置元素进行排序
+pairs = [(1, 'one'), (2, 'two'), (3, 'three'), (4, 'four')]
+pairs.sort(key = lambda x : x[0])
+print(pairs)
+pairs.sort(key = lambda x : x[1])
+print(pairs)
+
+import math
+# 自定义类
+class Circle(): 
+    # 为类建立变量 self，并申明 value 变量
+    def __init__(self, radius = 1): 
+        self.radius = radius
+    
+    def area(self): 
+        return self.radius**2*math.pi
+    
+    def perimeter(self): 
+        return self.radius*2*math.pi
+    
+    def set(self, radius): 
+        self.radius = radius
+
+# 使用预设值调用类        
+circle1 = Circle()
+print(circle1.radius)
+print(circle1.area())
+
+# 给定 self 的 radius 值
+circle2 = Circle(2)
+print(circle2.radius)
+print(circle2.area())
+
+# 使用类的 set 函数修改 radius 值
+circle3 = Circle()
+circle3.set(10)
+print(circle3.radius)
+print(circle3.area())
+
+# 直接调用 radius 值进行修改
+circle4        = Circle()
+circle4.radius = 5
+print(circle4.radius)
+print(circle4.area())
+
+class ClassName:
+    
+    def __init__(self):
+        self.x = 1
+    
+    def m1(self):
+        self.y = 2
+        z = 5
+        print('y= ', self.y, 'z= ',z)
+        
+    def m2(self):
+        self.y = 3   # 赋值时已经创建了y变量
+        z = self.x + 1
+        print('y= ', self.y, 'z= ',z)
+        self.m1()
+
+myobj = ClassName()
+myobj.m2()
