@@ -1,1 +1,1 @@
-# Wjq's python study codes.
+# Wjq's study codes.
